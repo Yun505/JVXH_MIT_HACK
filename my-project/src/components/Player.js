@@ -1,7 +1,7 @@
 import '../App.css';
 
 
-function Player(props, song_name, song_genre, ) {
+function Player() {
   return (
     <div>
 

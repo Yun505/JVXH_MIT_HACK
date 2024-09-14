@@ -1,5 +1,6 @@
 import './App.css';
 import Player from "./components/Player.js"
+import Upload from './components/Upload.js';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <div class="bg-blue-100 p-4">
           <p>Moves</p>
         </div>
+        <Upload/>
       </div>
 
 
