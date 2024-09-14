@@ -1,19 +1,28 @@
-import React from 'react';
+import {useEffect, React} from 'react'
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
-import Sprite from "./sprite.jpeg" ;
+
 import { useState } from 'react';
 import ReactPlayer from 'react-player'
+import data from './List.json';
 
 const handleDragStart = (e) => e.preventDefault();
 
-function Slides() {
+function Slides(data) {
+    
+    
     const [choreo, setChoreo] = useState([
-        {url: "https://www.youtube.com/watch?v=xtPkHihj7Ho"},
-        {url: "https://www.youtube.com/watch?v=09ABiCrGMXw"},
-        {url: "https://www.youtube.com/watch?v=09ABiCrGMXw"},
-        {url: "https://www.youtube.com/watch?v=09ABiCrGMXw"},
+    
     ]);
+
+    useEffect(() => {
+        fetch("List.json")
+            .then(response => response.json()
+            )
+            .then((json) => {console.log(json['videos']); setChoreo(json['videos'])})
+
+            
+    }, [])
 
     const items = () => choreo.map((json) => {return (<ReactPlayer
         url={json.url}
