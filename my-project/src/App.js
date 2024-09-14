@@ -16,13 +16,12 @@ function App() {
             <p>Moving slides</p>
           </div>
           <div class="bg-green-100 p-4">
-            <p>Player</p>
+            <Player />
           </div>
         </div>
         <div class="bg-blue-100 p-4">
           <p>Moves</p>
         </div>
-        <Upload/>
       </div>
 
 
