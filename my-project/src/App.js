@@ -21,6 +21,7 @@ function App() {
         </div>
         <div class="bg-blue-100 p-4">
           <p>Moves</p>
+          
         </div>
         <Upload/>
       </div>
