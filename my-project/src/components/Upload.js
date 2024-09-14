@@ -11,7 +11,7 @@ function Upload() {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div className="flex justify-center items-center">
       {/* Button to open modal */}
       <button 
         onClick={() => setIsModalOpen(true)} 
