@@ -1,7 +1,6 @@
 import '../App.css';
 import Upload from './Upload.js';
 import ReactPlayer from 'react-player'
-import 'boxicons'
 import { Button, useState } from 'react';
 
 
