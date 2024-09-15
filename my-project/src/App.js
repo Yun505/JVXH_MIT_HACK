@@ -19,7 +19,7 @@ function App() {
             <Player />
           </div>
       </div>
-        
+
       <div class="col-span-1 bg-[#1A2335] p-4">
           <p>Moves</p>
           <div  className="overflow-scroll
