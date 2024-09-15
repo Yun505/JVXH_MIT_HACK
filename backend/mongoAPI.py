@@ -5,7 +5,7 @@ from pydantic import BaseModel
 import requests
 import os
 import json
-
+import time
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
@@ -19,8 +19,6 @@ app.add_middleware(
 )
 SUNO_KEY = os.getenv('SUNO_API')
 url = 'https://studio-api.suno.ai/api/external/generate/'
-data = '{"topic": "A song about traveling on Christmas", "tags": "pop"}'
-
 class Search(BaseModel):
     search: str
 
@@ -75,10 +73,15 @@ async def search_for():
 async def test():
     return {"message": "AHHHHH"}
 
-@app.post("/suno")
-async def test(query: Query):
-    print(query.query)
-    data = f'{"topic": {query.query}, "tags": "pop"}'
+@app.get("/suno/{search}")
+async def test(search: str):
+    data = {"topic": f"A song with the following progression: {search}", "tags": "pop"}
+    # Make the POST request
     response = requests.post(url, headers=headers, data=data)
-    return {"message": str(response.text)}
+    clip_id = response.json()['id']
+    url = f'https://studio-api.suno.ai/api/external/clips/?ids={clip_id}'
+    headers = {'authorization': f'Bearer {SUNO_KEY}'}
+    time.sleep(1)
+    response = requests.get(url,headers=headers)
+    return {"message": str(response.json()['audio_url'])}
 
