@@ -1,0 +1,24 @@
+#custom-scrollbar::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Scrollbar track */
+#custom-scrollbar::-webkit-scrollbar-track {
+  background: #FBDB79; /* Track background color */
+  border-radius: 6px; /* Rounded corners for track */
+}
+
+/* Scrollbar thumb */
+#custom-scrollbar::-webkit-scrollbar-thumb {
+  
+  width: 10px; /* Set width to match scrollbar width */
+  height: 10px; /* Set height to ensure circular shape */
+  border: 3px solid #FBDB79; 
+  background: #d9bd69; /* Thumb color */
+  border-radius: 50%; /* Makes the thumb circular */
+}
+
+/* Scrollbar thumb on hover */
+#custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #b9a856; /* Thumb color on hover */
+}
