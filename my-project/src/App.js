@@ -6,7 +6,7 @@ import Slides from './components/Slides.js';
 function App() {
   return (
     <div class="text-white">
-      <div class="h-12 bg-[#CE8397]">Title</div>
+      <div class="text-2xl h-12 pl-5 text-justify p-2 bg-[#CE8397] font-bold leading-7 sm:truncate sm:text-3xl sm:tracking-tight"> MoveMatic</div>
       <div class="grid grid-cols-3 w-full min-h-screen">
         <div class="col-span-2 bg-[#121A2F]">
           <div class=" p-4">
