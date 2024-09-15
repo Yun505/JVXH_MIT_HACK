@@ -92,7 +92,7 @@ async def test(search: str):
     'sec-fetch-site': 'cross-site',
     'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36'
     }
-    tp = f"A song with the following progression: {search}"
+    tp = f"A song that does the following: {search}"
     data = {"topic": tp, "tags": "pop"}
     data = json.dumps(data)
     # Make the POST request
@@ -103,6 +103,6 @@ async def test(search: str):
     headers = {'authorization': f'Bearer {SUNO_KEY}'}
     time.sleep(30)
     response = requests.get(url,headers=headers)
-    print(response.json())
+    print(response.text)
     return {"message": "test"}
 
