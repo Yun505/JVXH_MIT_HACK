@@ -24,7 +24,6 @@ function Slides(data) {
 
     const items = () => choreo.map((json) => {return (<VideoElement videoUrl={json.url}/>)});
         
-    
     return (
         <div class="overflow-x-auto flex flex-row flex-shrink-0">
             {items()}

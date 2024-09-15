@@ -13,7 +13,6 @@ function App() {
           <input type="text" id="input-group-1" class="text-lg border rounded-lg block w-1/5 ps-3 p-3  dark:bg-[#121A2F] dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="project name"></input>
           </div>
           <div class="p-4">
-            <p>Moving slides</p>
             <Slides/>
           </div>
           <div class="p-4">
