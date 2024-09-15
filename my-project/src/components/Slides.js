@@ -1,4 +1,6 @@
 import {useEffect, React} from 'react'
+import '../video_scroll.css'
+
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
 
@@ -23,7 +25,7 @@ function Slides(data) {
     const items = () => choreo.map((json) => {return (<VideoElement videoUrl={json.url}/>)});
         
     return (
-        <div class="overflow-x-auto flex flex-row flex-shrink-0 gap-8">
+        <div id="custom-scrollbar" class="overflow-x-auto flex flex-row flex-shrink-0">
             {items()}
         </div>
     )

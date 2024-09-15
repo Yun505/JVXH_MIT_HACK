@@ -22,7 +22,7 @@ function App() {
         
       <div class="col-span-1 bg-[#1A2335] p-4">
           <p>Moves</p>
-          <div class="overflow-scroll
+          <div  className="overflow-scroll
                 w-full mx-200 h-screen text-justify">
           <Moves />
           </div>
