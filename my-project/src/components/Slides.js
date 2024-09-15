@@ -18,8 +18,6 @@ function Slides(data) {
             .then(response => response.json()
             )
             .then((json) => {console.log(json['videos']); setChoreo(json['videos']); console.log(choreo)})
-
-            
     }, [])
 
     const items = () => choreo.map((json) => {return (<VideoElement videoUrl={json.url}/>)});
