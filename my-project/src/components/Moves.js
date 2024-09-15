@@ -1,12 +1,23 @@
 import '../App.css';
-import { useState } from 'react';
 import { AMove } from './AMove.js';
+import {useEffect, useState, React} from 'react'
+import ReactPlayer from 'react-player';
 
 function Moves(props) {
   const allmoves = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
   const [searchInput, setSearchInput] = useState(""); 
-  const [filteredData, setFilteredData] = useState(allmoves); 
+  const [loaded, setLoaded] = useState(false); 
+  const [filteredData, setFilteredData] = useState(null); 
+
+
+
+
+  useEffect(() => {
+    fetch('http://localhost:8000/searchall')
+    .then(response => response.text())
+    .then(data => {let temp = JSON.parse(JSON.parse(data).message.replace(/'/g, '"')); console.log(temp); setFilteredData(temp)})
+  },[])
 
   // Handles the change in search input
   const handleChange = (e) => {
@@ -15,10 +26,15 @@ function Moves(props) {
 
   // Handles the search button click
   const handleSearch = () => {
-    const filtered = allmoves.filter((move) => {
+    const filtered = filteredData.filter((move) => {
       if (searchInput === '') {
         return true; // Return all moves if no input
       } else {
+        let url = "http://localhost:8000/search/"+searchInput;
+        fetch(url)
+        .then(response => response.text())
+        .then(data => {let temp = JSON.parse(JSON.parse(data).message.replace(/'/g, '"')); console.log(temp); setFilteredData(temp)})
+
         return move.toString().includes(searchInput);
       }
     });
@@ -47,9 +63,9 @@ function Moves(props) {
       {/* Grid for moves */}
       <div className="grid grid-rows-10 gap-x-4">
         <div className="row-span-9 flex flex-wrap">
-          {filteredData.map((move) => (
-            <AMove key={move} number={move} />
-          ))}
+          {filteredData && filteredData.map((move) => {console.log(move.link); return (
+            <AMove link={move.link} />
+          )})}
         </div>
       </div>
     </div>

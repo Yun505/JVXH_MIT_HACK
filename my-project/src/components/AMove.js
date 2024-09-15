@@ -1,16 +1,17 @@
 import React from "react";
+import ReactPlayer from 'react-player';
 
 export const AMove = ({
-  number}) => {
+  link}) => {
   return <div class="w-5/12 mb-5 bg-gray-400 m-1.5">
-    hello my name is wo xi huang bi in ling
-    <br></br>
-    fheiwfnweuo
-    <br></br>
-    fheiwfnweuo
-    <br></br>
-    fheiwfnweuo
-    <br></br>
-    wehfi
-     {number}</div>
+                  <ReactPlayer
+                url={link}
+                controls={false} // to show video controls like play, pause, etc.
+                width="100%" // you can customize width and height
+                height="auto"
+                loop={true}
+                volume={0}
+                muted={true}
+                playing={true}
+        /></div>
 };

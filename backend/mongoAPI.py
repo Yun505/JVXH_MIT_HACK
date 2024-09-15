@@ -6,6 +6,17 @@ import requests
 import os
 import json
 
+from fastapi.middleware.cors import CORSMiddleware
+
+app = FastAPI()
+
+# CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=['*'],
+    allow_methods=['*'],
+    allow_headers=['*'],
+)
 SUNO_KEY = os.getenv('SUNO_API')
 url = 'https://studio-api.suno.ai/api/external/generate/'
 data = '{"topic": "A song about traveling on Christmas", "tags": "pop"}'
@@ -42,11 +53,19 @@ client = MongoClient(URI)
 db = client['video-link-database']
 collection = db['video-links']
 
-@app.post("/search")
-async def search_for(search: Search):
-    print(search.search)
-    query = {'tags': search.search}
-    results = collection.find(query)
+@app.get("/search/{search}")
+async def search_for(search: str):
+    print(search)
+    query = {'tags': search}
+    results = collection.find(query,{"link": 1, "tags": 1, "_id":0})
+    result_list = []
+    for b in results:
+        result_list.append(b)
+    return {"message": str(result_list)}
+
+@app.get("/searchall")
+async def search_for():
+    results = collection.find({},{"link": 1, "tags": 1, "_id":0})
     result_list = []
     for b in results:
         result_list.append(b)
@@ -55,7 +74,6 @@ async def search_for(search: Search):
 @app.get("/endpoint")
 async def test():
     return {"message": "AHHHHH"}
-
 
 @app.post("/suno")
 async def test(query: Query):
