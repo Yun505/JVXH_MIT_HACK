@@ -75,13 +75,34 @@ async def test():
 
 @app.get("/suno/{search}")
 async def test(search: str):
-    data = {"topic": f"A song with the following progression: {search}", "tags": "pop"}
+    headers = {
+    'accept': '/',
+    'accept-language': 'en-US,en;q=0.9',
+    'affiliate-id': 'undefined',
+    'authorization': f'Bearer {SUNO_KEY}',  # Replace {USER_TOKEN} with your actual token
+    'content-type': 'text/plain;charset=UTF-8',
+    'origin': 'https://suno.com/',
+    'priority': 'u=1, i',
+    'referer': 'https://suno.com/',
+    'sec-ch-ua': '"Not/A)Brand";v="8", "Chromium";v="126", "Google Chrome";v="126"',
+    'sec-ch-ua-mobile': '?0',
+    'sec-ch-ua-platform': '"macOS"',
+    'sec-fetch-dest': 'empty',
+    'sec-fetch-mode': 'cors',
+    'sec-fetch-site': 'cross-site',
+    'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36'
+    }
+    tp = f"A song with the following progression: {search}"
+    data = {"topic": tp, "tags": "pop"}
+    data = json.dumps(data)
     # Make the POST request
+    url = "https://studio-api.suno.ai/api/external/generate/"
     response = requests.post(url, headers=headers, data=data)
     clip_id = response.json()['id']
     url = f'https://studio-api.suno.ai/api/external/clips/?ids={clip_id}'
     headers = {'authorization': f'Bearer {SUNO_KEY}'}
-    time.sleep(1)
+    time.sleep(30)
     response = requests.get(url,headers=headers)
-    return {"message": str(response.json()['audio_url'])}
+    print(response.json())
+    return {"message": "test"}
 
