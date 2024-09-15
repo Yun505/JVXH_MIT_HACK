@@ -28,7 +28,7 @@ function Moves(props) {
   return (
     <div>
       {/* Search bar with text color fix */}
-      <div className="sticky top-0 bg-white z-10 p-4 flex space-x-2">
+      <div className="sticky top-0 z-10 p-4 flex space-x-2">
         <input
           type="text"
           placeholder="Search moves..."
