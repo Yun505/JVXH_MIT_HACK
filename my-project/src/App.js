@@ -20,8 +20,8 @@ function App() {
      const sanitizedText = textareasText.toString().replace(/\n/g, ",");
      let url = "http://localhost:8000/suno/"+sanitizedText;
         fetch(url)
-        .then(response => {console.log(response.text())})
-        .then(data => {console.log(data)})
+        .then(response => (response.json()))
+        .then(data => setGenLink(data.message))
   
      alert('Text from textareas: \n' + textareasText.join('\n'));
    };
@@ -37,7 +37,7 @@ function App() {
           <div class="p-4">
             <Slides/>
             <button onClick={handleButtonClick}>Collect textareas and generate button!</button>
-            {genLink && (<div>{genLink}</div>)}
+            {genLink && (<video controls={true} autoplay="" name="media"><source src={genLink}/></video>)}
           </div>
           {/* <div class="p-4">
             <Player />

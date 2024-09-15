@@ -99,10 +99,10 @@ async def test(search: str):
     url = "https://studio-api.suno.ai/api/external/generate/"
     response = requests.post(url, headers=headers, data=data)
     clip_id = response.json()['id']
-    url = f'https://studio-api.suno.ai/api/external/clips/?ids={clip_id}'
-    headers = {'authorization': f'Bearer {SUNO_KEY}'}
+    url=f'https://cdn1.suno.ai/{clip_id}.mp3'
+    # headers = {'authorization': f'Bearer {SUNO_KEY}'}
     time.sleep(30)
-    response = requests.get(url,headers=headers)
-    print(response.text)
-    return {"message": "test"}
+    # response = requests.get(url,headers=headers)
+    # print(response.json())
+    return {"message": url}
 

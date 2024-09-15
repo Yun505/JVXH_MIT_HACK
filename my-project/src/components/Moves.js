@@ -2,6 +2,7 @@ import '../App.css';
 import { AMove } from './AMove.js';
 import {useEffect, useState, React} from 'react'
 import ReactPlayer from 'react-player';
+import '../video_scroll.css';
 
 function Moves(props) {
   const allmoves = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
@@ -9,9 +10,6 @@ function Moves(props) {
   const [searchInput, setSearchInput] = useState(""); 
   const [loaded, setLoaded] = useState(false); 
   const [filteredData, setFilteredData] = useState(null); 
-
-
-
 
   useEffect(() => {
     fetch('http://localhost:8000/searchall')
@@ -62,7 +60,7 @@ function Moves(props) {
 
       {/* Grid for moves */}
       <div className="grid grid-rows-10 gap-x-4">
-        <div className="row-span-9 flex flex-wrap">
+        <div id="custom-scrollbar" className=" row-span-9 flex flex-wrap">
           {filteredData && filteredData.map((move) => {console.log(move.link); return (
             <AMove link={move.link} />
           )})}

@@ -1,7 +1,7 @@
 import {useEffect, React} from 'react'
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
-
+import '../video_scroll.css';
 import { useState } from 'react';
 import ReactPlayer from 'react-player'
 import data from './List.json';
@@ -23,7 +23,7 @@ function Slides(data) {
     const items = () => choreo.map((json) => {return (<VideoElement videoUrl={json.url}/>)});
         
     return (
-        <div class="overflow-x-auto flex flex-row flex-shrink-0">
+        <div id="custom-scrollbar" class="overflow-x-auto flex flex-row flex-shrink-0">
             {items()}
         </div>
     )
