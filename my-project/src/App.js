@@ -1,6 +1,7 @@
 import './App.css';
 import Player from "./components/Player.js"
 import Moves from './components/Moves.js';
+import Slides from './components/Slides.js';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           </div>
           <div class="p-4">
             <p>Moving slides</p>
+            <Slides/>
           </div>
           <div class="p-4">
             <Player />
