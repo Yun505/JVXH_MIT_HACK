@@ -19,7 +19,7 @@ function Slides(data) {
         fetch("List.json")
             .then(response => response.json()
             )
-            .then((json) => {console.log(json['videos']); setChoreo(json['videos'])})
+            .then((json) => {console.log(json['videos']); setChoreo(json['videos']); console.log(choreo)})
 
             
     }, [])
